@@ -417,7 +417,7 @@ enum {
 	#define PIN_RFTX          15    // RF transmitter pin
 
 	// defined by Lorenz:
-+	#define PIN_OSPI_POWER    24    // set to high if valve is on to enable power supply relay for valves
+	#define PIN_OSPI_POWER    24    // set to high if valve is on to enable power supply relay for valves
 
 	//#define PIN_BUTTON_1      23    // button 1
 	//#define PIN_BUTTON_2      24    // button 2
@@ -457,6 +457,8 @@ enum {
 	#define PIN_RFTX        0
 	#define PIN_FREE_LIST  {}
 	#define ETHER_BUFFER_SIZE   16384
+	// defined by Lorenz:
+	#define PIN_OSPI_POWER    0    // set to high if valve is on to enable power supply relay for valves
 #endif
 
 #if defined(ENABLE_DEBUG) /** Serial debug functions */

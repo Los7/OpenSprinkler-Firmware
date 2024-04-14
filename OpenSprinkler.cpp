@@ -872,8 +872,6 @@ void OpenSprinkler::begin() {
 	detect_expanders();
 
 #else
-	// set power supply relay pin to output
-	pinMode(PIN_OSPI_POWER, OUTPUT);
 
 	// shift register setup
 	pinMode(PIN_SR_OE, OUTPUT);
@@ -896,6 +894,11 @@ void OpenSprinkler::begin() {
 		pinMode(PIN_SR_DATA, OUTPUT);
 	#endif
 
+#endif
+
+#if defined(OSPI)
+	// set power supply relay pin to output
+	pinMode(PIN_OSPI_POWER, OUTPUT);
 #endif
 
 	// Reset all stations
@@ -1197,9 +1200,8 @@ void OpenSprinkler::latch_apply_all_station_bits() {
 #endif
 
 /** Set power supply relay pin */
-void OpenSprinkler::set_power_supply_relay_pin()
-{
-	#if defined(OSPI) // if OSPI, use dynamically assigned pin_sr_data
+void OpenSprinkler::set_power_supply_relay_pin() {
+#if defined(OSPI) // if OSPI, use dynamically assigned pin_sr_data
 	// If any bit of any station is set, the relay is turned on
 	byte isActive = 0;
 	if (status.enabled) {
@@ -1208,7 +1210,7 @@ void OpenSprinkler::set_power_supply_relay_pin()
 		}
 	}
 	digitalWrite(PIN_OSPI_POWER, isActive ? 1 : 0);
-	#endif
+#endif
 }
 
 /** Apply all station bits
