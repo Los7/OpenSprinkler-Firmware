@@ -1194,6 +1194,21 @@ void OpenSprinkler::latch_apply_all_station_bits() {
 }
 #endif
 
+/** Set power supply relais pin */
+void OpenSprinkler::set_power_supply_relais_pin()
+{
+	#if defined(OSPI) // if OSPI, use dynamically assigned pin_sr_data
+	// If any bit of any station is set, the relais is turned on
+	byte isActive = 0;
+	if (status.enabled) {
+		for(bid=0;bid<=MAX_EXT_BOARDS;bid++) {
+			isActive |= station_bits[MAX_EXT_BOARDS-bid];
+		}
+	}
+	digitalWrite(PIN_OSPI_POWER, isActive ? 1 : 0);
+	#endif
+}
+
 /** Apply all station bits
  * !!! This will activate/deactivate valves !!!
  */
@@ -1262,6 +1277,11 @@ void OpenSprinkler::apply_all_station_bits() {
 			digitalWrite(PIN_SR_CLOCK, HIGH);
 		}
 	}
+
+	#if defined(OSPI)
+	// set power supply relais
+	set_power_supply_relais_pin();
+	#endif
 
 	#if defined(ARDUINO)
 	if((hw_type==HW_TYPE_DC) && engage_booster) {

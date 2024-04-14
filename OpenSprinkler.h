@@ -319,6 +319,7 @@ public:
 	static byte set_station_bit(byte sid, byte value, uint16_t dur=0); // set station bit of one station (sid->station index, value->0/1)
 	static void switch_special_station(byte sid, byte value, uint16_t dur=0); // swtich special station
 	static void clear_all_station_bits(); // clear all station bits
+	static void set_power_supply_relais_pin(); // Set power supply relais pin
 	static void apply_all_station_bits(); // apply all station bits (activate/deactive values)
 
 	static int8_t send_http_request(uint32_t ip4, uint16_t port, char* p, void(*callback)(char*)=NULL, uint16_t timeout=5000);
