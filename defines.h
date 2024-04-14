@@ -36,7 +36,7 @@ typedef unsigned long ulong;
 														// if this number is different from the one stored in non-volatile memory
 														// a device reset will be automatically triggered
 
-#define OS_FW_MINOR      3  // Firmware minor version
+#define OS_FW_MINOR      11  // Firmware minor version  // original value: 3; -> 11 to test if my version is device
 
 /** Hardware version base numbers */
 #define OS_HW_VERSION_BASE   0x00 // OpenSprinkler
@@ -417,7 +417,7 @@ enum {
 	#define PIN_RFTX          15    // RF transmitter pin
 
 	// defined by Lorenz:
-+	#define PIN_OSPI_POWER    24    // set to high if valve is on to enable power supply relais for valves
++	#define PIN_OSPI_POWER    24    // set to high if valve is on to enable power supply relay for valves
 
 	//#define PIN_BUTTON_1      23    // button 1
 	//#define PIN_BUTTON_2      24    // button 2
