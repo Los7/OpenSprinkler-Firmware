@@ -1204,6 +1204,7 @@ void OpenSprinkler::set_power_supply_relay_pin() {
 #if defined(OSPI) // if OSPI, use dynamically assigned pin_sr_data
 	// If any bit of any station is set, the relay is turned on
 	byte isActive = 0;
+	byte bid;
 	if (status.enabled) {
 		for(bid=0;bid<=MAX_EXT_BOARDS;bid++) {
 			isActive |= station_bits[MAX_EXT_BOARDS-bid];
