@@ -1210,16 +1210,7 @@ void OpenSprinkler::set_power_supply_relay_pin() {
 			isActive |= station_bits[MAX_EXT_BOARDS-bid];
 		}
 	}
-	byte oldState = digitalReadExt(PIN_OSPI_POWER);
-	if (oldState != isActive)
-	{
-		digitalWrite(PIN_OSPI_POWER, isActive ? 1 : 0);
-		if (isActive)
-		{
-			delay(5000);
-		}
-	}
-
+	digitalWrite(PIN_OSPI_POWER, isActive ? 1 : 0);
 #endif
 }
 
